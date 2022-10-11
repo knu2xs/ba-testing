@@ -54,7 +54,7 @@ GOTO %1
 :: Build the local environment from the environment file
 :env
     :: Create new environment from environment file
-    CALL conda create -p %CONDA_DIR% --clone "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3"
+    CALL conda create -p %CONDA_DIR% --clone "%PROGRAMFILES%\ArcGIS\Pro\bin\Python\envs\arcgispro-py3"
     GOTO add_dependencies
 
 :: Add python dependencies from environment.yml to the project environment

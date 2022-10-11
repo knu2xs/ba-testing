@@ -9,9 +9,7 @@ dependencies:
   - black>=21
   - cookiecutter
   - dask
-  - h3-py
   - jupyterlab
-  - mkdocs
   - munch
   - nodejs
   - pip
@@ -20,16 +18,9 @@ dependencies:
   - python-dotenv
   - pyarrow
   - pyyaml
-  - scipy
-  - scikit-learn
-  - seaborn
-  - shapely
   - swifter
   - tabulate
-  - tqdm
   - pip:
-    - azure-storage-blob
-    - boto3
     - bump2version
     - ipykernel
     - nbsphinx
@@ -37,6 +28,6 @@ dependencies:
     - sphinx
     - sphinx-autodoc-typehints
     - sphinx-copybutton
-    - tox
-    - tox-conda
-    - twine
+#    - tox
+#    - tox-conda
+#    - twine
