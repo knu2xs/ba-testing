@@ -1,0 +1,552 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>&lt;no title&gt; &#8212; ba-testing 0.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.htm" />
+    <link rel="search" title="Search" href="../search.htm" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.htm">ba-testing</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="notebook-template.htm">Notebook Template</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.htm">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.htm" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt .copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+.jp-RenderedHTMLCommon table,
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+.jp-RenderedHTMLCommon thead,
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+.jp-RenderedHTMLCommon tr,
+.jp-RenderedHTMLCommon th,
+.jp-RenderedHTMLCommon td,
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+.jp-RenderedHTMLCommon th,
+div.rendered_html th {
+  font-weight: bold;
+}
+.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.jp-RenderedHTMLCommon tbody tr:hover,
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">arcgis.gis</span> <span class="kn">import</span> <span class="n">GIS</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gis</span> <span class="o">=</span> <span class="n">GIS</span><span class="p">(</span><span class="n">profile</span><span class="o">=</span><span class="s1">&#39;agol&#39;</span><span class="p">)</span>
+
+<span class="n">gis</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">AttributeError</span>                            Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-9-9f7ce946fbb6&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 1</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>gis <span class="ansi-yellow-intense-fg ansi-bold">=</span> GIS<span class="ansi-yellow-intense-fg ansi-bold">(</span>profile<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-blue-intense-fg ansi-bold">&#39;agol&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">      2</span>
+<span class="ansi-green-fg">      3</span> gis
+
+<span class="ansi-green-intense-fg ansi-bold">~\.conda\envs\arcgis\lib\site-packages\arcgis\gis\__init__.py</span> in <span class="ansi-cyan-fg">__init__</span><span class="ansi-blue-intense-fg ansi-bold">(self, url, username, password, key_file, cert_file, verify_cert, set_active, client_id, profile, **kwargs)</span>
+<span class="ansi-green-fg">    505</span>                 )
+<span class="ansi-green-fg">    506</span>             <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 507</span><span class="ansi-yellow-intense-fg ansi-bold">                 </span><span class="ansi-green-intense-fg ansi-bold">raise</span> e
+<span class="ansi-green-fg">    508</span>         <span class="ansi-green-intense-fg ansi-bold">try</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">    509</span>             if (
+
+<span class="ansi-green-intense-fg ansi-bold">~\.conda\envs\arcgis\lib\site-packages\arcgis\gis\__init__.py</span> in <span class="ansi-cyan-fg">__init__</span><span class="ansi-blue-intense-fg ansi-bold">(self, url, username, password, key_file, cert_file, verify_cert, set_active, client_id, profile, **kwargs)</span>
+<span class="ansi-green-fg">    446</span>             self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_expiration <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-cyan-intense-fg ansi-bold">60</span>
+<span class="ansi-green-fg">    447</span>         <span class="ansi-green-intense-fg ansi-bold">try</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 448</span><span class="ansi-yellow-intense-fg ansi-bold">             self._portal = _portalpy.Portal(
+</span><span class="ansi-green-fg">    449</span>                 self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_url<span class="ansi-yellow-intense-fg ansi-bold">,</span>
+<span class="ansi-green-fg">    450</span>                 self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_username<span class="ansi-yellow-intense-fg ansi-bold">,</span>
+
+<span class="ansi-green-intense-fg ansi-bold">~\.conda\envs\arcgis\lib\site-packages\arcgis\gis\_impl\_portalpy.py</span> in <span class="ansi-cyan-fg">__init__</span><span class="ansi-blue-intense-fg ansi-bold">(self, url, username, password, key_file, cert_file, expiration, referer, proxy_host, proxy_port, connection, workdir, tokenurl, verify_cert, client_id, custom_auth, token, **kwargs)</span>
+<span class="ansi-green-fg">    201</span>                 <span class="ansi-green-intense-fg ansi-bold">if</span> token <span class="ansi-yellow-intense-fg ansi-bold">==</span> api_key<span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">    202</span>                     token <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-green-intense-fg ansi-bold">None</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 203</span><span class="ansi-yellow-intense-fg ansi-bold">                 self.con = Connection(
+</span><span class="ansi-green-fg">    204</span>                     baseurl<span class="ansi-yellow-intense-fg ansi-bold">=</span>self<span class="ansi-yellow-intense-fg ansi-bold">.</span>resturl<span class="ansi-yellow-intense-fg ansi-bold">,</span>
+<span class="ansi-green-fg">    205</span>                     tokenurl<span class="ansi-yellow-intense-fg ansi-bold">=</span>tokenurl<span class="ansi-yellow-intense-fg ansi-bold">,</span>
+
+<span class="ansi-green-intense-fg ansi-bold">~\.conda\envs\arcgis\lib\site-packages\arcgis\gis\_impl\_con\_connection.py</span> in <span class="ansi-cyan-fg">__init__</span><span class="ansi-blue-intense-fg ansi-bold">(self, baseurl, username, password, **kwargs)</span>
+<span class="ansi-green-fg">    301</span>             self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_session <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_portal_connection<span class="ansi-yellow-intense-fg ansi-bold">.</span>_session
+<span class="ansi-green-fg">    302</span>         <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 303</span><span class="ansi-yellow-intense-fg ansi-bold">             </span>self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_create_session<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    304</span>
+<span class="ansi-green-fg">    305</span>         <span class="ansi-red-intense-fg ansi-bold">#  Product Info</span>
+
+<span class="ansi-green-intense-fg ansi-bold">~\.conda\envs\arcgis\lib\site-packages\arcgis\gis\_impl\_con\_connection.py</span> in <span class="ansi-cyan-fg">_create_session</span><span class="ansi-blue-intense-fg ansi-bold">(self)</span>
+<span class="ansi-green-fg">    501</span>             self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_session<span class="ansi-yellow-intense-fg ansi-bold">.</span>auth <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_custom_auth
+<span class="ansi-green-fg">    502</span>             self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_auth <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-blue-intense-fg ansi-bold">&#34;CUSTOM&#34;</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 503</span><span class="ansi-yellow-intense-fg ansi-bold">         </span><span class="ansi-green-intense-fg ansi-bold">elif</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_auth<span class="ansi-yellow-intense-fg ansi-bold">.</span>lower<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span> <span class="ansi-yellow-intense-fg ansi-bold">==</span> <span class="ansi-blue-intense-fg ansi-bold">&#34;home&#34;</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">    504</span>             <span class="ansi-green-intense-fg ansi-bold">from</span> arcgis<span class="ansi-yellow-intense-fg ansi-bold">.</span>auth<span class="ansi-yellow-intense-fg ansi-bold">.</span>_auth<span class="ansi-yellow-intense-fg ansi-bold">.</span>_notebook <span class="ansi-green-intense-fg ansi-bold">import</span> EsriNotebookAuth
+<span class="ansi-green-fg">    505</span>
+
+<span class="ansi-red-intense-fg ansi-bold">AttributeError</span>: &#39;NoneType&#39; object has no attribute &#39;lower&#39;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ge_url</span> <span class="o">=</span> <span class="n">gis</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">helperServices</span><span class="o">.</span><span class="n">geoenrichment</span><span class="o">.</span><span class="n">url</span>
+
+<span class="n">ge_url</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;https://geoenrichqa.arcgis.com/arcgis/rest/services/World/GeoenrichmentServer&#39;
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cntry_res</span> <span class="o">=</span> <span class="n">gis</span><span class="o">.</span><span class="n">_con</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ge_url</span> <span class="o">+</span> <span class="s1">&#39;/Geoenrichment/Countries&#39;</span><span class="p">)</span>
+
+<span class="n">cntry_lst</span> <span class="o">=</span> <span class="n">cntry_res</span><span class="p">[</span><span class="s1">&#39;countries&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cntry_dict</span> <span class="o">=</span> <span class="n">cntry_lst</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">cntry_dict</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;id&#39;: &#39;AL&#39;,
+ &#39;name&#39;: &#39;Albania&#39;,
+ &#39;abbr3&#39;: &#39;ALB&#39;,
+ &#39;altName&#39;: &#39;ALBANIA&#39;,
+ &#39;continent&#39;: &#39;Europe&#39;,
+ &#39;distanceUnits&#39;: &#39;Kilometers&#39;,
+ &#39;esriUnits&#39;: &#39;esriKilometers&#39;,
+ &#39;defaultExtent&#39;: {&#39;xmin&#39;: 19.2627565462,
+  &#39;ymin&#39;: 39.6444975717,
+  &#39;xmax&#39;: 21.0578285374,
+  &#39;ymax&#39;: 42.6610482403,
+  &#39;spatialReference&#39;: {&#39;wkid&#39;: 4326, &#39;latestWkid&#39;: 4326}},
+ &#39;defaultDatasetID&#39;: &#39;ALB_MBR_2021&#39;,
+ &#39;datasets&#39;: [&#39;ALB_MBR_2021&#39;],
+ &#39;hierarchies&#39;: [{&#39;ID&#39;: &#39;census&#39;,
+   &#39;alias&#39;: &#39;AL Standard Data&#39;,
+   &#39;shortDescription&#39;: &#39;This data source for the standard AL data is Michael Bauer Research (MBR). Vintage 2021.&#39;,
+   &#39;default&#39;: True,
+   &#39;longDescription&#39;: &#39;This data source for the standard AL data is Michael Bauer Research (MBR). Vintage 2021.&#39;,
+   &#39;locales&#39;: [&#39;en&#39;],
+   &#39;datasets&#39;: [&#39;ALB_MBR_2021&#39;],
+   &#39;levelsInfo&#39;: {&#39;geographyLevels&#39;: [&#39;Country&#39;,
+     &#39;Postcodes1&#39;,
+     &#39;Counties&#39;,
+     &#39;Postcodes2&#39;,
+     &#39;Municipalities&#39;]},
+   &#39;variablesInfo&#39;: {&#39;categories&#39;: [&#39;Age&#39;,
+     &#39;Education&#39;,
+     &#39;Households&#39;,
+     &#39;Income&#39;,
+     &#39;Jobs&#39;,
+     &#39;Key Facts&#39;,
+     &#39;Population&#39;,
+     &#39;Spending&#39;],
+    &#39;dataBrowserVariableCount&#39;: 120},
+   &#39;populationToPolygonSizeRating&#39;: 3.48,
+   &#39;apportionmentConfidence&#39;: 2.79,
+   &#39;apportionmentThresholds&#39;: [{&#39;method&#39;: &#39;BlockApportion&#39;,
+     &#39;dataLayer&#39;: &#39;AL.Municipalities&#39;,
+     &#39;pointsLayer&#39;: &#39;AL.BlockPoints&#39;,
+     &#39;maximumSize&#39;: 150.0},
+    {&#39;method&#39;: &#39;CentroidsInPolygon&#39;, &#39;dataLayer&#39;: &#39;AL.Municipalities&#39;}],
+   &#39;hasInterestingFactsStatistics&#39;: True}],
+ &#39;defaultDataCollection&#39;: &#39;KeyGlobalFacts&#39;,
+ &#39;defaultReport&#39;: &#39;AlbaniaSummaryReport&#39;,
+ &#39;defaultReportTemplate&#39;: &#39;Albania Summary Report&#39;,
+ &#39;defaultInfographic&#39;: &#39;key-facts-global&#39;,
+ &#39;defaultInfographicTemplate&#39;: &#39;Key Facts (MBR)&#39;,
+ &#39;currencyCode&#39;: &#39;ALL&#39;,
+ &#39;currencyName&#39;: &#39;Albanian Lek&#39;,
+ &#39;currencySymbol&#39;: &#39;ALL&#39;,
+ &#39;currencyFormat&#39;: &#39;ALL\xa00;-ALL\xa00&#39;,
+ &#39;dataCollections&#39;: &#39;&#39;}
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Country</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cntry_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dict</span> <span class="o">=</span> <span class="n">cntry_dict</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iso3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">[</span><span class="s1">&#39;abbr3&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hierarchies</span> <span class="o">=</span> <span class="p">[</span><span class="n">CountryHierarchy</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">[</span><span class="s1">&#39;hierarchies&#39;</span><span class="p">]]</span>
+
+<span class="k">class</span> <span class="nc">CountryHierarchy</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hrchy_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dict</span> <span class="o">=</span> <span class="n">hrchy_dict</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2021, Esri Business Analyst Deveopment Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.2.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/notebooks/notebook-template-Copy1.ipynb.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ba_testing.main &#8212; ba-testing 0.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.htm" />
+    <link rel="search" title="Search" href="../../search.htm" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.htm">ba-testing</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/notebook-template.htm">Notebook Template</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.htm">Documentation overview</a><ul>
+  <li><a href="../index.htm">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.htm" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for ba_testing.main</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">lru_cache</span>
+
+<span class="kn">from</span> <span class="nn">arcgis.gis</span> <span class="kn">import</span> <span class="n">GIS</span>
+
+
+<div class="viewcode-block" id="BusinessAnalyst"><a class="viewcode-back" href="../../index.htm#ba_testing.BusinessAnalyst">[docs]</a><span class="k">class</span> <span class="nc">BusinessAnalyst</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Business Analyst object to provide access to introspection capabilities.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gis</span><span class="p">:</span> <span class="n">GIS</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">gis</span> <span class="o">=</span> <span class="n">gis</span>
+
+        <span class="c1"># add any additional keyword arguments as properties</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="nd">@lru_cache</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">geoenrichment_url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The url string for the Geoenrichment services.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gis</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">helperServices</span><span class="o">.</span><span class="n">geoenrichment</span><span class="o">.</span><span class="n">url</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">countries_url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Geoenrichment Countries url.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">geoenrichment_url</span> <span class="o">+</span> <span class="s1">&#39;/Geoenrichment/Countries&#39;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">data_collections_url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Data collections url.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">geoenrichment_url</span> <span class="o">+</span> <span class="s1">&#39;/Geoenrichment/DataCollections&#39;</span>
+
+<div class="viewcode-block" id="BusinessAnalyst.get_countries"><a class="viewcode-back" href="../../index.htm#ba_testing.BusinessAnalyst.get_countries">[docs]</a>    <span class="nd">@lru_cache</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">get_countries</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;List of ``Country`` objects with properties.&quot;&quot;&quot;</span>
+        <span class="c1"># get the list of countries from</span>
+        <span class="n">cntry_res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gis</span><span class="o">.</span><span class="n">_con</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">geoenrichment_url</span> <span class="o">+</span> <span class="s1">&#39;/Geoenrichment/Countries&#39;</span><span class="p">)</span>
+
+        <span class="c1"># get this list of countries out of the JSON</span>
+        <span class="n">cntry_lst</span> <span class="o">=</span> <span class="p">[</span><span class="n">Country</span><span class="p">(</span><span class="n">cntry_dict</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span> <span class="k">for</span> <span class="n">cntry_dict</span> <span class="ow">in</span> <span class="n">cntry_res</span><span class="p">[</span><span class="s1">&#39;countries&#39;</span><span class="p">]]</span>
+
+        <span class="k">return</span> <span class="n">cntry_lst</span></div></div>
+
+
+<div class="viewcode-block" id="Country"><a class="viewcode-back" href="../../index.htm#ba_testing.Country">[docs]</a><span class="k">class</span> <span class="nc">Country</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Business Analyst Country.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cntry_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">business_analyst</span><span class="p">:</span> <span class="n">BusinessAnalyst</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dict</span> <span class="o">=</span> <span class="n">cntry_dict</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ba</span> <span class="o">=</span> <span class="n">business_analyst</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iso3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">[</span><span class="s1">&#39;abbr3&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hierarchies</span> <span class="o">=</span> <span class="p">[</span><span class="n">CountryHierarchy</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">[</span><span class="s1">&#39;hierarchies&#39;</span><span class="p">]]</span>
+
+<div class="viewcode-block" id="Country.get_data_collection_json"><a class="viewcode-back" href="../../index.htm#ba_testing.Country.get_data_collection_json">[docs]</a>    <span class="nd">@lru_cache</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">get_data_collection_json</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;JSON response as a Python Dictionary from data collection REST endpoint.&quot;&quot;&quot;</span>
+        <span class="n">dc_res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ba</span><span class="o">.</span><span class="n">gis</span><span class="o">.</span><span class="n">_con</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ba</span><span class="o">.</span><span class="n">data_collections_url</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">iso3</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">dc_res</span></div>
+
+<div class="viewcode-block" id="Country.get_enrich_variables"><a class="viewcode-back" href="../../index.htm#ba_testing.Country.get_enrich_variables">[docs]</a>    <span class="nd">@lru_cache</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">get_enrich_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Enrich variables available for country.&quot;&quot;&quot;</span>
+
+        <span class="c1"># get a list of enrich variables</span>
+        <span class="n">dc_res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_data_collection_json</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">dc_res</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">enrich_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Property alias for ``get_enrich_variables``.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_enrich_variables</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="CountryHierarchy"><a class="viewcode-back" href="../../index.htm#ba_testing.CountryHierarchy">[docs]</a><span class="k">class</span> <span class="nc">CountryHierarchy</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Business Analyst Country data hierarchy for data organization.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hrchy_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">business_analyst</span><span class="p">:</span> <span class="n">BusinessAnalyst</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dict</span> <span class="o">=</span> <span class="n">hrchy_dict</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ba</span> <span class="o">=</span> <span class="n">business_analyst</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">]</span></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2021, Esri Business Analyst Deveopment Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.2.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

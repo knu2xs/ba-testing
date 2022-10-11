@@ -58,16 +58,18 @@ class Country(object):
 
     @lru_cache(16)
     def get_data_collection_json(self) -> dict:
-        """JSON response from data collection REST endpoint."""
+        """JSON response as a Python Dictionary from data collection REST endpoint."""
         dc_res = self.ba.gis._con.get(self.ba.data_collections_url + f'/{self.iso3}')
         return dc_res
 
     @lru_cache(16)
-    def get_enrich_variables(self) -> list:
+    def get_enrich_variables(self) -> dict:
         """Enrich variables available for country."""
 
         # get a list of enrich variables
         dc_res = self.get_data_collection_json()
+
+        return dc_res
 
     @property
     def enrich_variables(self) -> list:
