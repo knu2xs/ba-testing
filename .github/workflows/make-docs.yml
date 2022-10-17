@@ -55,6 +55,7 @@ jobs:
       run: |
         conda run -n sphinx conda install -c conda-forge pandoc ipython jinja2 -y
         conda run -n sphinx pip install furo nbsphinx sphinx-autodoc-typehints sphinx-copybutton sphinxcontrib-youtube
+        conda run -n sphinx pip install .
 
     # build docs
     - name: Build Sphinx Documentation
