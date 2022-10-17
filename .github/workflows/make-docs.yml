@@ -35,6 +35,7 @@ jobs:
     # build the docs with a slightly tweaked custom command
     - uses: ammaraskar/sphinx-action@master
       with:
+        pre-build-command: "pip install ."
         docs-folder: "docsrc"
         build-command: "sphinx-build -a -b html . ../../docs"
 
