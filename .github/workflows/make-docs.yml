@@ -1,10 +1,12 @@
 name: Make Docs
 
-run-name: Make docs on branch - ${{ github.ref_name }}
+run-name: Make Docs
 
 # when any pushes are made to any branch with changes to the source, notebooks or docs directory
 on:
   push:
+    branches:
+      - main
     paths:
       - "src/**/*.py"
       - "notebooks/**/*.ipynb"
