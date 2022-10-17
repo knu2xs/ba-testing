@@ -1,7 +1,5 @@
 name: Make Docs
 
-run-name: Make Docs
-
 on:
 
   # when any pushes are made to any branch with changes to the source, notebooks or docs directory
