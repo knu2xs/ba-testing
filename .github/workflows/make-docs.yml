@@ -11,8 +11,8 @@ on:
     paths:
       - "src/**/*.py"
       - "notebooks/**/*.ipynb"
-      - "docs/"
-      - ".github/workflows/"
+      - "docs/**/*"
+      - ".github/workflows/**/*"
 
   # test workflow as well...
   workflow_dispatch:
