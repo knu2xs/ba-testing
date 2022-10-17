@@ -30,11 +30,11 @@ jobs:
     steps:
 
     # get the repo contents
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v3.git
 
     # install pandoc so nbsphinx will work
-    - name: Install PanDoc
-      run: "sudo apt-get install pandoc"
+    # - name: Install PanDoc
+    #   run: "sudo apt-get install pandoc"
 
     # install miniconda so can install pandoc using conda
     - name: Install Miniconda
