@@ -70,7 +70,6 @@ jobs:
         # Upload contents of docs directory
         path: "docs"
 
-
   deploy:
 
     # wait for build before running
