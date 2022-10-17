@@ -10,6 +10,12 @@ on:
       - 'notebooks/**/*.ipynb'
       - 'docs/**'
 
+# set permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build:
 
@@ -28,18 +34,18 @@ jobs:
         docs-folder: "docsrc/src"
         build-command: "sphinx-build -a -b html docsrc/source ../../docs"
 
-    # create git commit to save updated docs
-    - name: Commit Built Docs
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add .
-        git commit -m "Documentation update via GitHub Action" || true
-
-    # push updated docs back to the repo
-    # - name: Push Updated Docs
-    - uses: ad-m/github-push-action@master
+    # ensure pages configured correctly
+    - name: Setup Pages
+        uses: actions/configure-pages@v2
+      
+    # upload docs directory
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v1
       with:
-        branch: ${{ github.ref_name }}
-        directory: docs
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        # Upload contents of docs directory
+        path: './docs'
+      
+      # deploy automatically to GitHub pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
