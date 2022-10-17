@@ -35,13 +35,14 @@ jobs:
       run: "sudo apt-get install pandoc"
 
     # install miniconda so can install pandoc using conda
-    - name: Install MiniConda
+    - name: Install Miniconda
       run: |
         wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
         chmod +x Miniconda3-latest-Linux-x86_64.sh
         sudo bash ./Miniconda3-latest-Linux-x86_64.sh -b
-        conda init
+        conda init bash
         source ~/.bashrc
+        conda update -n base -c defaults conda
 
     # create and activate the conda environment
     - name: Create Conda Environment
