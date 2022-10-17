@@ -17,28 +17,28 @@ jobs:
 
   steps:
 
-    # get the repo contents
-    - uses: actions/checkout@v3
+  # get the repo contents
+  - uses: actions/checkout@v3
 
-    # build the docs with a slightly tweaked custom command
-    - name: Build Sphinx Docs
-    - uses: ammaraskar/sphinx-action@master
-      with:
-        docs-folder: "docsrc/src"
-        build-command: "sphinx-build -a -b html docsrc/source ../../docs"
+  # build the docs with a slightly tweaked custom command
+  - name: Build Sphinx Docs
+  - uses: ammaraskar/sphinx-action@master
+    with:
+      docs-folder: "docsrc/src"
+      build-command: "sphinx-build -a -b html docsrc/source ../../docs"
 
-    # create git commit to save updated docs
-    - name: Commit Built Docs
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add .
-        git commit -m "Documentation update via GitHub Action" || true
+  # create git commit to save updated docs
+  - name: Commit Built Docs
+    run: |
+      git config --local user.email "action@github.com"
+      git config --local user.name "GitHub Action"
+      git add .
+      git commit -m "Documentation update via GitHub Action" || true
 
-    # push updated docs back to the repo
-    - name: Push Updated Docs
-      uses: ad-m/github-push-action@master
-      with:
-        branch: ${{ github.ref_name }}
-        directory: docs
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+  # push updated docs back to the repo
+  - name: Push Updated Docs
+    uses: ad-m/github-push-action@master
+    with:
+      branch: ${{ github.ref_name }}
+      directory: docs
+      github_token: ${{ secrets.GITHUB_TOKEN }}
