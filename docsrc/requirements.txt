@@ -1,4 +1,5 @@
 furo
+jinja>=3.0
 nbsphinx
 sphinx-autodoc-typehints
 sphinx-copybutton
