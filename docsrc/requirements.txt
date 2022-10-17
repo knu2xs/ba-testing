@@ -1,4 +1,5 @@
 furo
+IPython
 Jinja2>=3.0
 nbsphinx
 pandoc

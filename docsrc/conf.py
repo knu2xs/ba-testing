@@ -233,6 +233,9 @@ htmlhelp_basename = f'ba_testing_doc'
 # For NBSphinx, since the sys.path additions stop conversion, ignore errors
 nbsphinx_allow_errors = True
 
+# in NBSphinx, disable execution since can be problematic
+nbsphinx_execute = 'never'
+
 # include __init__ docstrings for class description
 autoclass_content = 'both'
 
