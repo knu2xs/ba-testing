@@ -32,8 +32,8 @@ jobs:
     # - name: Build Sphinx Docs
     - uses: ammaraskar/sphinx-action@master
       with:
-        docs-folder: "docsrc/src"
-        build-command: "sphinx-build -a -b html docsrc/source ../../docs"
+        docs-folder: "docsrc"
+        build-command: "sphinx-build -a -b html . ../../docs"
 
     # ensure pages configured correctly
     - name: Setup Pages
