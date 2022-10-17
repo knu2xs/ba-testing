@@ -36,7 +36,7 @@ jobs:
 
     # ensure pages configured correctly
     - name: Setup Pages
-        uses: actions/configure-pages@v2
+      uses: actions/configure-pages@v2
       
     # upload docs directory
     - name: Upload artifact
