@@ -1,0 +1,46 @@
+name: Make Docs
+
+run-name: ${{ github.action }} on ${{ github.ref_name }} branch following the ${{ github.sha }} commit.
+
+# when any pushes are made to any branch with changes to the source, notebooks or docs directory
+on:
+  push:
+    paths:
+      - 'src/**/*.py'
+      - 'notebooks/**/*.ipynb'
+      - 'docs/**'
+    paths-ignore:
+      - 'docs/'
+
+# run on linux since simpliest enviroment and no operating system dependencies are required
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+  steps:
+
+    # get the repo contents
+    - uses: actions/checkout@v3
+
+    # build the docs with a slightly tweaked custom command
+    - name: Build Sphinx Docs
+    - uses: ammaraskar/sphinx-action@master
+      with:
+        docs-folder: "docsrc/src"
+        build-command: "sphinx-build -a -b html docsrc/source ../../docs"
+
+    # create git commit to save updated docs
+    - name: Commit Built Docs
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git commit -m "Documentation update via GitHub Action" || true
+
+    # push updated docs back to the repo
+    - name: Push Updated Docs
+      uses: ad-m/github-push-action@master
+      with:
+        branch: ${{ github.ref_name }}
+        directory: docs
+        github_token: ${{ secrets.GITHUB_TOKEN }}
