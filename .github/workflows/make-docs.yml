@@ -1,4 +1,4 @@
-name: Make Docs
+name: Make Sphinx Docs
 
 on:
 
