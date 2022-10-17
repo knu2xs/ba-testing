@@ -43,23 +43,22 @@ jobs:
         source /home/runner/.bashrc
         conda init bash
         source /home/runner/.bashrc
+        source ~/.bashrc
         conda update -n base -c defaults conda
 
     # create and activate the conda environment
     - name: Create Conda Environment
-      run: |
-        conda create -n sphinx-build python=3.9
-        conda activate sphinx-build
+      run: conda create -n sphinx python=3.9
 
     # install python packages
     - name: Install Python Packages
       run: |
-        conda install -c conda-forge pandoc ipython jinja2 -y
-        pip install furo nbsphinx sphinx-autodoc-typehints sphinx-copybutton sphinxcontrib-youtube
+        conda run -n sphinx conda install -c conda-forge pandoc ipython jinja2 -y
+        conda run -n sphinx pip install furo nbsphinx sphinx-autodoc-typehints sphinx-copybutton sphinxcontrib-youtube
 
     # build docs
     - name: Build Sphinx Documentation
-      run: "sphinx-build -a -b html docsrc docs"
+      run: conda run -n sphinx sphinx-build -a -b html docsrc docs
 
     # ensure pages configured correctly
     - name: Setup Pages
