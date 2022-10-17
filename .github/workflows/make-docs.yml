@@ -9,6 +9,7 @@ on:
       - "src/**/*.py"
       - "notebooks/**/*.ipynb"
       - "docs/**"
+      - ".github/workflows/**"
 
 # set permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
