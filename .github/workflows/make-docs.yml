@@ -23,7 +23,7 @@ jobs:
 
     # build the docs with a slightly tweaked custom command
     - name: Build Sphinx Docs
-    - uses: ammaraskar/sphinx-action@master
+      uses: ammaraskar/sphinx-action@master
       with:
         docs-folder: "docsrc/src"
         build-command: "sphinx-build -a -b html docsrc/source ../../docs"
