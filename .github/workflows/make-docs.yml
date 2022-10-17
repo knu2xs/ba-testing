@@ -45,7 +45,7 @@ jobs:
         # Upload contents of docs directory
         path: './docs'
       
-      # deploy automatically to GitHub pages
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+    # deploy automatically to GitHub pages
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v1
