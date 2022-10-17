@@ -1,6 +1,7 @@
 furo
 Jinja2>=3.0
 nbsphinx
+pandoc
 sphinx-autodoc-typehints
 sphinx-copybutton
 sphinxcontrib-youtube
