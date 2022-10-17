@@ -22,8 +22,8 @@ jobs:
     - uses: actions/checkout@v3
 
     # build the docs with a slightly tweaked custom command
-    - name: Build Sphinx Docs
-      uses: ammaraskar/sphinx-action@master
+    # - name: Build Sphinx Docs
+    - uses: ammaraskar/sphinx-action@master
       with:
         docs-folder: "docsrc/src"
         build-command: "sphinx-build -a -b html docsrc/source ../../docs"
@@ -37,8 +37,8 @@ jobs:
         git commit -m "Documentation update via GitHub Action" || true
 
     # push updated docs back to the repo
-    - name: Push Updated Docs
-      uses: ad-m/github-push-action@master
+    # - name: Push Updated Docs
+    - uses: ad-m/github-push-action@master
       with:
         branch: ${{ github.ref_name }}
         directory: docs
