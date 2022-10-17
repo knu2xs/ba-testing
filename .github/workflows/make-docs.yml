@@ -28,11 +28,13 @@ jobs:
     # get the repo contents
     - uses: actions/checkout@v3
 
+    # install pandoc so nbsphinx will work
+    - name: Install PanDoc
+      run: "sudo apt-get install pandoc"
+
     # build the docs with a slightly tweaked custom command
-    # - name: Build Sphinx Docs
     - uses: ammaraskar/sphinx-action@master
       with:
-        pre-build-command: "sudo apt-get install pandoc"
         docs-folder: "docsrc"
         build-command: "sphinx-build -a -b html . ../../docs"
 
