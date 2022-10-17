@@ -90,3 +90,6 @@ arcgis/ImportLog
 
 # make sure the environment is not included
 env/
+
+# since docs are automatically built
+docs/

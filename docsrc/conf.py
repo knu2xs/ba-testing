@@ -26,7 +26,7 @@ sys.path.insert(0, os.path.abspath('../../src'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'ba-testing'
+project = 'BA-Testing'
 copyright = '2021, Esri Business Analyst Deveopment Team'
 author = 'Esri Business Analyst Deveopment Team'
 
