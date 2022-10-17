@@ -6,9 +6,9 @@ run-name: ${{ github.action }} on ${{ github.ref_name }} branch following the ${
 on:
   push:
     paths:
-      - 'src/**/*.py'
-      - 'notebooks/**/*.ipynb'
-      - 'docs/**'
+      - "src/**/*.py"
+      - "notebooks/**/*.ipynb"
+      - "docs/**"
 
 # set permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -43,7 +43,7 @@ jobs:
       uses: actions/upload-pages-artifact@v1
       with:
         # Upload contents of docs directory
-        path: './docs'
+        path: "docs"
       
     # deploy automatically to GitHub pages
     - name: Deploy to GitHub Pages
