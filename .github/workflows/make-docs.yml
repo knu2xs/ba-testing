@@ -32,6 +32,7 @@ jobs:
     # - name: Build Sphinx Docs
     - uses: ammaraskar/sphinx-action@master
       with:
+        pre-build-command: "sudo apt-get install pandoc"
         docs-folder: "docsrc"
         build-command: "sphinx-build -a -b html . ../../docs"
 
