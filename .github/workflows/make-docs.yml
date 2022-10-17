@@ -9,8 +9,6 @@ on:
       - 'src/**/*.py'
       - 'notebooks/**/*.ipynb'
       - 'docs/**'
-    paths-ignore:
-      - 'docs/'
 
 # run on linux since simpliest enviroment and no operating system dependencies are required
 jobs:
